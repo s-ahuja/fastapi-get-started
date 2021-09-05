@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  db:
+    image: postgres:13.1
+    environment:
+      - POSTGRES_USER=${DOCKER_POSTGRES_USER}
+      - POSTGRES_PASSWORD=${DOCKER_POSTGRES_PASSWORD}
+      - POSTGRES_DB=bookstore
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - ./db/postgresdb:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
