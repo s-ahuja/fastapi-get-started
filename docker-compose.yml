@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  fastapiapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - SQLALCHEMY_DATABASE_URI=${SQLALCHEMY_DATABASE_URL}
+    ports:
+      - 8000:8000
+#    volumes:
+#      - .:/app

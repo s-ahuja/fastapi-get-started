@@ -3,7 +3,6 @@ from bookstore.models.item import ItemModel
 from bookstore.schemas.item import ItemSchemaCreate
 from fastapi import HTTPException, status
 
-
 class ItemRepository:
     def __init__(self, db: Session):
         self.db = db

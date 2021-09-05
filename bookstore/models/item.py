@@ -1,7 +1,6 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
 from db import Base
 
-
 # from sqlalchemy.orm import relationship
 
 class ItemModel(Base):
