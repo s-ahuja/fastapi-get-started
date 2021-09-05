@@ -15,3 +15,5 @@ alembic downgrade -1
 # To get more information
 alembic current
 alembic history - verbose
+# generate SQL for upgrade
+alembic upgrade start_version:end_version --sql >migration.sql
