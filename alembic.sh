@@ -1,4 +1,5 @@
 # 1. Initialize alembic database migration flow
+
 alembic init alembic
 
 # 2. This will scan the models and generate upgrade & downgrade scripts
