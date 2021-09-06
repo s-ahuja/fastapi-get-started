@@ -21,5 +21,8 @@ alembic-offline:
 	alembic upgrade --sql > "00x_comment.sql"
 	# alembic upgrade start_version:end_version --sql >migration.sql
 
-docker-build-n-run:
+docker-app-up:
 	docker-compose build && docker-compose up
+
+docker-app-down:
+	docker-compose down
