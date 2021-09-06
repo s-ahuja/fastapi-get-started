@@ -15,6 +15,15 @@ app.include_router(item_router)
 app.include_router(items_router)
 Base.metadata.create_all(bind=engine)
 
+
+@app.get("/test")
+def home_for_test():
+    return {"message": "able to reach out to the test method"}
+
+
+@app.get("/admin")
+def home_for_test():
+    return {"db": os.getenv("SQLALCHEMY_DATABASE_URL")}
 # def common_parameters(mandatory_q: int = None, optional_q: Optional[int] = None, skip: int = 0, limit: int = 100):
 #     return {"mandatory_q": mandatory_q, "optional_q": optional_q, "skip": skip, "limit": limit}
 #
