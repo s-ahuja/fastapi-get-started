@@ -7,7 +7,7 @@ def create_item(request):
     return dict(id=request.param, title=f"Foo Bar_{request.param}", description=f"The Foo Barters_{request.param}")
 
 
-@pytest.mark.dependency()
+@pytest.mark.dependency(name="get all is dependent on create all")
 @pytest.mark.parametrize("create_item", [1, 2, 3], indirect=["create_item"])
 def test_create_item(create_item):
     response = client.post("/item/", json=create_item, )
