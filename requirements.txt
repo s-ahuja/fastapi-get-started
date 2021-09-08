@@ -5,3 +5,9 @@ pydantic
 python-dotenv
 alembic
 psycopg2-binary
+# required only for development/unit-testing #
+pytest
+requests
+pytest-html
+pytest-cov
+coverage

@@ -3,6 +3,7 @@ from bookstore.models.item import ItemModel
 from bookstore.schemas.item import ItemSchemaCreate
 from fastapi import HTTPException, status
 
+
 class ItemRepository:
     def __init__(self, db: Session):
         self.db = db
@@ -27,7 +28,7 @@ class ItemRepository:
 
         item.delete(synchronize_session=False)
         self.db.commit()
-        return f"item with {id} deleted successfully"
+        return {"detail": f"Item with id {id} deleted successfully"}
 
     def update(self, id: int, request: ItemSchemaCreate):
         item = self.db.query(ItemModel).filter(ItemModel.id == id).first()
@@ -40,11 +41,11 @@ class ItemRepository:
             setattr(item, key, value) if value else None
         self.db.commit()
         self.db.refresh(item)
-        return f"item with {id} updated successfully"
+        return item
 
     def get(self, id: int):
         item = self.db.query(ItemModel).filter(ItemModel.id == id).first()
         if not item:
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
-                                detail=f"Item with the id {id} is not available")
+                                detail=f"Item with id {id} not found")
         return item

@@ -26,3 +26,10 @@ docker-app-up:
 
 docker-app-down:
 	docker-compose down
+
+pytest:
+	find . -name "*,cover" -type f -delete
+	pytest -v --html=report.html --self-contained-html --cov=bookstore main_test.py tests/
+	open -n -a /Applications/Google\ Chrome.app  "./report.html"
+	coverage html --skip-empty
+	open -a /Applications/Google\ Chrome.app  "./htmlcov/index.html"
