@@ -29,6 +29,7 @@ docker-app-down:
 
 pytest:
 	find . -name "*,cover" -type f -delete
-	pytest -v --html=tests/report.html --self-contained-html --cov-branch --cov=bookstore main_test.py tests/
+	pytest -v --html=report.html --self-contained-html --cov-branch --cov=bookstore main_test.py tests/
 	coverage html --skip-empty
-	open -a /Applications/Google\ Chrome.app  "tests/report.html" "htmlcov/index.html"
+	open -a /Applications/Google\ Chrome.app  "report.html" "htmlcov/index.html"
+
