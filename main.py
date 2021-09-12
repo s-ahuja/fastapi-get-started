@@ -1,7 +1,8 @@
 import os
 # from typing import Optional
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from dotenv import load_dotenv
+import time
 
 if os.path.isfile(".env"):
     print(".env file found. loading....")
@@ -19,6 +20,15 @@ Base.metadata.create_all(bind=engine)
 @app.get("/test")
 def home_for_test():
     return {"message": "able to reach out to the test method"}
+
+
+@app.middleware(middleware_type="http")
+async def add_process_time_header(request: Request, call_next):
+    start_time = time.time()
+    response = await call_next(request)
+    process_time = (time.time() - start_time) * 1000
+    response.headers["X-Process-Time"] = str(process_time)
+    return response
 
 
 @app.get("/admin")

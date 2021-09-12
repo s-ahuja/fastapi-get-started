@@ -11,4 +11,6 @@ requests
 pytest-html
 pytest-cov
 pytest-dependency
+pytest-mock
+mock-alchemy
 coverage
